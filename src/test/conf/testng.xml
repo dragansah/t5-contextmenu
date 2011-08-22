@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="contextmenu tests" annotations="1.5">
+    <test name="Integration Tests">
+    <parameter name="tapestry.web-app-folder" value="src/test/integration"/>
+        <packages>
+            <package name="org.apache.tapestry5.contextmenu.integration"/>
+        </packages>
+    </test>
+</suite>
+

@@ -1,0 +1,53 @@
+description = "ContextMenu mixins for the apache tapestry5 web application framework"
+
+   apply plugin: "java"
+   apply plugin: "groovy"
+   apply plugin: "maven"
+   apply plugin: "eclipse"
+	   
+   group="org.apache.tapestry5"
+   version="0.1-SNAPSHOT"
+   sourceCompatibility = '1.6'
+   tapestryVersion = "5.3-alpha-13"
+
+   targetCompatibility = '1.6'
+   configurations {
+      provided
+      deployerJars
+   }
+
+	test {
+		useTestNG()      
+		options.suites("src/test/conf/testng.xml")
+		jvmArgs("-XX:MaxPermSize=512m")        
+	}
+
+   repositories {
+     mavenCentral()
+     mavenRepo urls: "https://repository.apache.org/content/repositories/staging/"
+	 mavenRepo urls: "http://snapshots.repository.codehaus.org"
+   }
+
+    task sourcesJar(type: Jar, dependsOn:classes) {
+       classifier = 'sources'
+       from sourceSets.main.allSource
+    }
+
+    artifacts {
+       archives sourcesJar
+    }
+
+   dependencies {
+     compile group:"org.apache.tapestry", name :"tapestry-core", version:tapestryVersion
+     groovy "org.codehaus.groovy:groovy-all:1.7.4"
+     compile "org.slf4j:slf4j-api:1.6.1"
+     compile "org.slf4j:slf4j-log4j12:1.6.1"
+     testCompile 'org.testng:testng:6.1.1'
+     testCompile group:"org.apache.tapestry", name :"tapestry-test", version:tapestryVersion
+   }
+   
+  jar {
+    manifest {
+        attributes 'Tapestry-Module-Classes': 'org.apache.tapestry5.contextmenu.services.ContextMenuModule'
+    }
+  }
