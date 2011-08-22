@@ -5,7 +5,7 @@ description = "ContextMenu mixins for the apache tapestry5 web application frame
    apply plugin: "maven"
    apply plugin: "eclipse"
 	   
-   group="org.apache.tapestry5"
+   group="org.apache.tapestry5.contextmenu"
    version="0.1-SNAPSHOT"
    sourceCompatibility = '1.6'
    tapestryVersion = "5.3-alpha-13"

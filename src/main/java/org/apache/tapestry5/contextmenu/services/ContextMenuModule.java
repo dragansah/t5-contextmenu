@@ -24,6 +24,6 @@ public class ContextMenuModule
             OrderedConfiguration<ComponentClassTransformWorker2> configuration,
             Environment environment)
     {
-        configuration.add("GridCellWorker", new GridCellWorker(environment), "after:*");
+        configuration.add("GridCellWorker", new GridCellWorker(environment));
     }
 }
